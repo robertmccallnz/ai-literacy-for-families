@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="pjt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 1 — AI palyantja nyangatja / How AI works — AI Literacy for Families</title>
+<style>
+:root {
+  --ink: #111;
+  --paper: #f8f5ee;
+  --rule: #111;
+  --accent: #b3000c;
+  --muted: #5a5550;
+  --soft: #efe9dc;
+  --sidebar-bg: #efe9dc;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
+}
+@media (max-width: 880px) {
+  .layout { grid-template-columns: 1fr; }
+}
+
+aside.sidebar {
+  background: var(--sidebar-bg);
+  border-right: 1px solid #d8d2c4;
+  padding: 28px 22px 40px;
+  position: sticky; top: 0;
+  align-self: start;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+@media (max-width: 880px) {
+  aside.sidebar { position: static; max-height: none; }
+}
+
+.sidebar h2 {
+  font-family: "Iowan Old Style", Georgia, serif;
+  font-size: 20px;
+  font-weight: 900;
+  margin: 0 0 4px;
+  letter-spacing: -0.01em;
+}
+.sidebar .subtitle {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  margin: 0 0 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #c8bfa6;
+}
+.sidebar nav { margin-top: 12px; }
+.sidebar nav h3 {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--muted);
+  margin: 18px 0 6px;
+}
+.sidebar nav ol, .sidebar nav ul {
+  list-style: none;
+  padding: 0; margin: 0;
+}
+.sidebar nav li { margin: 0; }
+.sidebar nav a {
+  display: block;
+  padding: 7px 10px;
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 15px;
+  border-left: 3px solid transparent;
+}
+.sidebar nav a:hover { background: rgba(0,0,0,0.04); }
+.sidebar nav a.active {
+  background: var(--paper);
+  border-left-color: var(--accent);
+  font-weight: 700;
+}
+.lang-switch select {
+  width: 100%;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  padding: 6px 8px;
+  background: var(--paper);
+  border: 1px solid #c8bfa6;
+}
+.draft-pill {
+  display: inline-block;
+  background: #ffefcc;
+  border: 1px solid #d6a700;
+  color: #5a4400;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  padding: 2px 6px;
+  margin-left: 6px;
+  border-radius: 2px;
+}
+
+main.content {
+  padding: 40px clamp(20px, 5vw, 60px) 80px;
+  max-width: 820px;
+}
+
+main h1 {
+  font-family: "Iowan Old Style", "Times New Roman", serif;
+  font-weight: 900;
+  font-size: clamp(30px, 4.5vw, 44px);
+  line-height: 1.08;
+  margin: 0 0 18px;
+  letter-spacing: -0.01em;
+  border-bottom: 2px solid var(--rule);
+  padding-bottom: 10px;
+}
+main h2 {
+  font-family: "Iowan Old Style", Georgia, serif;
+  font-weight: 800;
+  font-size: 26px;
+  margin: 1.5em 0 0.4em;
+  border-bottom: 1px solid #d8d2c4;
+  padding-bottom: 4px;
+}
+main h3 {
+  font-family: "Iowan Old Style", Georgia, serif;
+  font-weight: 700;
+  font-size: 20px;
+  margin: 1.4em 0 0.3em;
+}
+main h4 {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--muted);
+  margin: 1.2em 0 0.2em;
+}
+main p { margin: 0.7em 0; }
+main a { color: var(--accent); }
+main ul, main ol { margin: 0.6em 0 0.6em 1.4em; }
+main li { margin: 0.25em 0; }
+main blockquote {
+  border-left: 4px solid var(--accent);
+  padding: 8px 14px;
+  margin: 1em 0;
+  background: rgba(0,0,0,0.03);
+  font-style: italic;
+  color: #333;
+}
+main hr { border: none; border-top: 1px solid #d8d2c4; margin: 1.6em 0; }
+main code {
+  font-family: "Iowan Old Style Mono", "Menlo", monospace;
+  background: rgba(0,0,0,0.05);
+  padding: 1px 5px;
+  font-size: 0.95em;
+}
+main pre {
+  background: #f0ece4;
+  border: 1px solid #d8d2c4;
+  padding: 12px 16px;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.4;
+}
+main table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+}
+main th, main td {
+  border: 1px solid #c8bfa6;
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+  font-size: 15px;
+}
+main th { background: var(--soft); font-weight: 700; }
+
+.pager {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.pager a {
+  display: inline-block;
+  padding: 10px 14px;
+  background: var(--ink);
+  color: var(--paper);
+  text-decoration: none;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  border: 2px solid var(--ink);
+}
+.pager a:hover { background: var(--accent); border-color: var(--accent); }
+.pager a.outline { background: var(--paper); color: var(--ink); }
+.pager a.outline:hover { color: white; }
+.pager .placeholder { visibility: hidden; }
+
+.crumbs {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.crumbs a { color: var(--muted); text-decoration: none; }
+.crumbs a:hover { color: var(--accent); }
+
+.footer-note {
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid #d8d2c4;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+}
+.footer-note a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+  <h2>AI Literacy <span class="draft-pill">working draft</span></h2>
+  <div class="subtitle">Pitjantjatjara · Bilingual draft — Anangu review invited</div>
+  <div class="lang-switch">
+    <select onchange="if(this.value) window.location.href=this.value">
+      <option value="../en/w1.html">English</option><option value="../mi/w1.html">Te Reo Māori</option><option value="../sm/w1.html">Gagana Sāmoa</option><option value="../pt-BR/w1.html">Português (Brasil)</option><option value="../gn/w1.html">Avañe&#x27;ẽ / Guaraní ⚠</option><option value="../pjt/w1.html" selected>Pitjantjatjara ⚠</option>
+    </select>
+  </div>
+  <nav>
+    <h3>Modules</h3>
+    <ul>
+      <li><a href="index.html">Course Overview</a></li><li><a href="w1.html" class="active">Week 1</a></li><li><a href="w2.html">Week 2</a></li><li><a href="w3.html">Week 3</a></li><li><a href="w4.html">Week 4</a></li><li><a href="w5.html">Week 5</a></li><li><a href="w6.html">Week 6</a></li><li><a href="wrap-up.html">Course Wrap-Up</a></li>
+    </ul>
+    <h3>Materials</h3>
+    <ul>
+      <li><a href="../../translations/pdf/ai_literacy_course.pjt.pdf" target="_blank">Course PDF</a></li>
+      <li><a href="../../translations/pdf/ai_literacy_workbook.pjt.pdf" target="_blank">Workbook PDF</a></li>
+      <li><a href="../../translations/pdf/ai_literacy_social_kit.pjt.pdf" target="_blank">Social kit PDF</a></li>
+    </ul>
+    <h3>More</h3>
+    <ul>
+      <li><a href="../../index.html">← All languages</a></li>
+      <li><a href="https://kiwidialectic.substack.com" target="_blank">Substack</a></li>
+      <li><a href="https://github.com/robertmccallnz/ai-literacy-for-families" target="_blank">GitHub</a></li>
+    </ul>
+  </nav>
+</aside>
+<main class="content">
+<div class="crumbs"><a href="../../index.html">AI Literacy for Families</a> · Pitjantjatjara</div>
+<h2 id="week-1-ai-palyantja-nyangatja-how-ai-works">Week 1 — AI
+palyantja nyangatja / How AI works</h2>
+<p><strong>Pitj:</strong> AI nyangatja big computer system. Tjana data
+pulkanya nintiringu — words pulka, pictures pulka, kuwari computer-ngka.
+Mungartji palya kulinytjaku — AI ngayulu wiya kulini anangu-kuti. AI
+ngayulu pattern kulini munu watjani next word. Iriti same — same way
+text-message-lu autocomplete palyani.</p>
+<p><strong>Eng:</strong> An AI is a big computer system. It was trained
+on huge amounts of data — words, pictures, internet. It does not think
+like a person. It looks at patterns and guesses the next word, the same
+way autocomplete on your phone does.</p>
+<h3 id="learning-objectives-tjukurpa-nintiringkunytjaku">Learning
+objectives / Tjukurpa nintiringkunytjaku</h3>
+<ul>
+<li>AI nintiringkunytjaku — palyantja nyangatja (large language model,
+image generator)</li>
+<li>AI mulapa kutjara: predicts, classifies, generates — kutju
+kutju</li>
+<li>Anangu-ku phone-ngka AI nyangatja — search, social media, photo app,
+autocorrect</li>
+</ul>
+<h3 id="discussion-wangkanyi-mara">Discussion / Wangkanyi mara</h3>
+<ol type="1">
+<li>Week-pa mungartji wiya — AI palyantja nyaa kulira? Munu kuwari?
+Same?</li>
+<li>Phone-ngka AI nyangatja — nyaa? List palyani mara.</li>
+<li>AI guess-mani next word — nyaa question palya, nyaa question wiya
+palya?</li>
+<li>Tjitji puḻka mama-ngka: anangu pakaringkula nintiringkunytjaku
+tjitji-ku AI-tjara, nyaa pulka? Mama tjitji-ngka: nyaa
+nintiringkunytjaku pulka?</li>
+</ol>
+<h3 id="activity-palyani-same-question-three-tools">Activity / Palyani:
+“Same question, three tools”</h3>
+<p><strong>Pitj:</strong> Question kutju palyani — same question — tjana
+three tool tjuṯangka watjala (e.g., ChatGPT, Google Gemini, Google
+search). Watjala mara: tjana same answer? Tjana different? Tjana source
+watjala — source mulamula? Tjana strong answer — strong answer mulamula
+correct?</p>
+<p><strong>Eng:</strong> Pick one question you both care about (e.g.,
+“What should we cook this week on a budget?” or “What caused World War
+I?”). Ask the <strong>same question</strong> in three different tools —
+for example ChatGPT, Google Gemini, and a regular Google search. Compare
+the answers: - Where do they agree? - Where do they disagree? - Which
+one cites sources? Are the sources real? - Which felt most confident?
+Was confidence the same as correctness?</p>
+<p>Write one sentence each about what surprised you.</p>
+<h3 id="parent-resources-mama-ngunytju-ku-watjala">Parent resources /
+Mama-ngunytju-ku watjala</h3>
+<ul>
+<li><a
+href="https://dayofai.org/news/day-of-ai-and-common-sense-media-launch-essential-toolkit-for-parents-and-families-talking-to-kids-about-ai-privacy-fairness-and-responsibility">Day
+of AI &amp; Common Sense Media</a></li>
+<li><a href="https://raise.mit.edu/">MIT RAISE</a></li>
+<li><a href="https://www.elements-of-ai.com/">Elements of AI</a></li>
+</ul>
+<h3 id="reflection-tjukurpa-unngu">Reflection / Tjukurpa unngu</h3>
+<p><em>“Week-pa mungartji wiya — AI kulira ngayuku ___. Kuwari kulira
+___.”</em> <em>“Before this week I thought AI was ___. Now I think it is
+___.”</em></p>
+<hr />
+
+<div class="pager"><a class="outline" href="index.html">← Previous</a><a href="w2.html">Next →</a></div>
+<div class="footer-note">
+  Free under CC BY-SA 4.0 · From <a href="https://kiwidialectic.substack.com">The Kiwi Dialectic</a> ·
+  <a href="https://github.com/robertmccallnz/ai-literacy-for-families">Edit / translate / fork on GitHub</a>
+</div>
+</main>
+</div>
+</body>
+</html>

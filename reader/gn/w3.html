@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="gn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arapokõindy 3 — Ñemoñemby ha Tekoarandu Porã — AI Literacy for Families</title>
+<style>
+:root {
+  --ink: #111;
+  --paper: #f8f5ee;
+  --rule: #111;
+  --accent: #b3000c;
+  --muted: #5a5550;
+  --soft: #efe9dc;
+  --sidebar-bg: #efe9dc;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
+}
+@media (max-width: 880px) {
+  .layout { grid-template-columns: 1fr; }
+}
+
+aside.sidebar {
+  background: var(--sidebar-bg);
+  border-right: 1px solid #d8d2c4;
+  padding: 28px 22px 40px;
+  position: sticky; top: 0;
+  align-self: start;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+@media (max-width: 880px) {
+  aside.sidebar { position: static; max-height: none; }
+}
+
+.sidebar h2 {
+  font-family: "Iowan Old Style", Georgia, serif;
+  font-size: 20px;
+  font-weight: 900;
+  margin: 0 0 4px;
+  letter-spacing: -0.01em;
+}
+.sidebar .subtitle {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  margin: 0 0 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #c8bfa6;
+}
+.sidebar nav { margin-top: 12px; }
+.sidebar nav h3 {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--muted);
+  margin: 18px 0 6px;
+}
+.sidebar nav ol, .sidebar nav ul {
+  list-style: none;
+  padding: 0; margin: 0;
+}
+.sidebar nav li { margin: 0; }
+.sidebar nav a {
+  display: block;
+  padding: 7px 10px;
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 15px;
+  border-left: 3px solid transparent;
+}
+.sidebar nav a:hover { background: rgba(0,0,0,0.04); }
+.sidebar nav a.active {
+  background: var(--paper);
+  border-left-color: var(--accent);
+  font-weight: 700;
+}
+.lang-switch select {
+  width: 100%;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  padding: 6px 8px;
+  background: var(--paper);
+  border: 1px solid #c8bfa6;
+}
+.draft-pill {
+  display: inline-block;
+  background: #ffefcc;
+  border: 1px solid #d6a700;
+  color: #5a4400;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  padding: 2px 6px;
+  margin-left: 6px;
+  border-radius: 2px;
+}
+
+main.content {
+  padding: 40px clamp(20px, 5vw, 60px) 80px;
+  max-width: 820px;
+}
+
+main h1 {
+  font-family: "Iowan Old Style", "Times New Roman", serif;
+  font-weight: 900;
+  font-size: clamp(30px, 4.5vw, 44px);
+  line-height: 1.08;
+  margin: 0 0 18px;
+  letter-spacing: -0.01em;
+  border-bottom: 2px solid var(--rule);
+  padding-bottom: 10px;
+}
+main h2 {
+  font-family: "Iowan Old Style", Georgia, serif;
+  font-weight: 800;
+  font-size: 26px;
+  margin: 1.5em 0 0.4em;
+  border-bottom: 1px solid #d8d2c4;
+  padding-bottom: 4px;
+}
+main h3 {
+  font-family: "Iowan Old Style", Georgia, serif;
+  font-weight: 700;
+  font-size: 20px;
+  margin: 1.4em 0 0.3em;
+}
+main h4 {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--muted);
+  margin: 1.2em 0 0.2em;
+}
+main p { margin: 0.7em 0; }
+main a { color: var(--accent); }
+main ul, main ol { margin: 0.6em 0 0.6em 1.4em; }
+main li { margin: 0.25em 0; }
+main blockquote {
+  border-left: 4px solid var(--accent);
+  padding: 8px 14px;
+  margin: 1em 0;
+  background: rgba(0,0,0,0.03);
+  font-style: italic;
+  color: #333;
+}
+main hr { border: none; border-top: 1px solid #d8d2c4; margin: 1.6em 0; }
+main code {
+  font-family: "Iowan Old Style Mono", "Menlo", monospace;
+  background: rgba(0,0,0,0.05);
+  padding: 1px 5px;
+  font-size: 0.95em;
+}
+main pre {
+  background: #f0ece4;
+  border: 1px solid #d8d2c4;
+  padding: 12px 16px;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.4;
+}
+main table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+}
+main th, main td {
+  border: 1px solid #c8bfa6;
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+  font-size: 15px;
+}
+main th { background: var(--soft); font-weight: 700; }
+
+.pager {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.pager a {
+  display: inline-block;
+  padding: 10px 14px;
+  background: var(--ink);
+  color: var(--paper);
+  text-decoration: none;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  border: 2px solid var(--ink);
+}
+.pager a:hover { background: var(--accent); border-color: var(--accent); }
+.pager a.outline { background: var(--paper); color: var(--ink); }
+.pager a.outline:hover { color: white; }
+.pager .placeholder { visibility: hidden; }
+
+.crumbs {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.crumbs a { color: var(--muted); text-decoration: none; }
+.crumbs a:hover { color: var(--accent); }
+
+.footer-note {
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid #d8d2c4;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+}
+.footer-note a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+  <h2>AI Literacy <span class="draft-pill">working draft</span></h2>
+  <div class="subtitle">Avañe&#x27;ẽ / Guaraní · Peteĩ arandu 6 arapokõindy rehegua tuvakuérape ha mitãrusukuérape</div>
+  <div class="lang-switch">
+    <select onchange="if(this.value) window.location.href=this.value">
+      <option value="../en/w3.html">English</option><option value="../mi/w3.html">Te Reo Māori</option><option value="../sm/w3.html">Gagana Sāmoa</option><option value="../pt-BR/w3.html">Português (Brasil)</option><option value="../gn/w3.html" selected>Avañe&#x27;ẽ / Guaraní ⚠</option><option value="../pjt/w3.html">Pitjantjatjara ⚠</option>
+    </select>
+  </div>
+  <nav>
+    <h3>Modules</h3>
+    <ul>
+      <li><a href="index.html">Mbo&#x27;esyry Mba&#x27;éichapa Oĩ</a></li><li><a href="w1.html">Arapokõindy 1</a></li><li><a href="w2.html">Arapokõindy 2</a></li><li><a href="w3.html" class="active">Arapokõindy 3</a></li><li><a href="w4.html">Arapokõindy 4</a></li><li><a href="w5.html">Arapokõindy 5</a></li><li><a href="w6.html">Arapokõindy 6</a></li><li><a href="wrap-up.html">Mbo&#x27;esyry Ñemohu&#x27;ã</a></li>
+    </ul>
+    <h3>Materials</h3>
+    <ul>
+      <li><a href="../../translations/pdf/ai_literacy_course.gn.pdf" target="_blank">Course PDF</a></li>
+      <li><a href="../../translations/pdf/ai_literacy_workbook.gn.pdf" target="_blank">Workbook PDF</a></li>
+      <li><a href="../../translations/pdf/ai_literacy_social_kit.gn.pdf" target="_blank">Social kit PDF</a></li>
+    </ul>
+    <h3>More</h3>
+    <ul>
+      <li><a href="../../index.html">← Opaite ñe&#x27;ẽ</a></li>
+      <li><a href="https://kiwidialectic.substack.com" target="_blank">Substack</a></li>
+      <li><a href="https://github.com/robertmccallnz/ai-literacy-for-families" target="_blank">GitHub</a></li>
+    </ul>
+  </nav>
+</aside>
+<main class="content">
+<div class="crumbs"><a href="../../index.html">AI Literacy for Families</a> · Avañe&#x27;ẽ / Guaraní</div>
+<h2 id="arapokõindy-3-ñemoñemby-ha-tekoarandu-porã">Arapokõindy 3 —
+Ñemoñemby ha Tekoarandu Porã</h2>
+<h3 id="ñemboe-mbae-ojejaposéva">Ñembo’e mba’e ojejaposéva</h3>
+<ul>
+<li>Eikuaa mba’e datokuéra oñembyaty mitãrusu oipuru jave AI chatbot, AI
+app térã AI irũ.</li>
+<li>Embo’esaka mba’éichapa ojuavy AI <strong>léinte rupi</strong> jepuru
+ha <strong>tekoarandu porã rupi</strong> jepuru.</li>
+<li>Embohape tembiporu AI peipurútava ha mba’épa pemoĩta hese.</li>
+</ul>
+<h3 id="mbae-mbarete">Mba’e mbarete</h3>
+<p>Repy’ỹreheguáva AI tembiporu jepi nahembiapói tee. Ipepy katuete ha’e
+nde data — nde porandu, nde kuatia, sapy’ánte nde ñe’ẽ ha nde rova.
+Ñemoñemby porandúpe ári oĩ tekoarandu porã porandu: AI irũ app ipuruporã
+mitãrusukuérape — investigación pyahu ohechauka aproximadamente mbohapy
+hekovia mitãrusukuéragui oñeha’ã peteĩ rehe, jepetjeẽmaha guive oĩ
+jepy’apy tuichapa angapyhy jeguarogui ha tekorosã 18 ary
+mboyveguápe.</p>
+<h3 id="ñomongetarã-porandu">Ñomongetarã porandu</h3>
+<ol type="1">
+<li>Rehai jave peteĩ mba’e AI chatbot-pe, moõpa peimo’ã ohóva upe ñe’ẽ?
+Mávapa ikatu omoñe’ẽ? Araka mbohapýpa oñeñongatu?</li>
+<li>Oĩma peteĩ mba’e pemoĩma’akue peteĩ AI ndive nde reipotaiva
+mbo’ehára, omba’apoukáva, térã peteĩ irũ tenonderãve omoñe’ẽ? (Aní
+pemombe’u — añoite pe “héẽ” térã “nahániri”.)</li>
+<li>AI irũ app ojejapókue toñeñandu peteĩ irũicha. Mba’épa ojuavy peteĩ
+tembiporu nepytyvõva ha peteĩ tembiporu oipotáva rejevy katu chupe?</li>
+<li>Peteĩ app repy’ỹrehegua oipuru jave nde data omongakuaa hag̃ua
+imbo’e, peichapa jasakã porã? Iñambuepa pe imbohovái peteĩ mitã 9
+arypeguándi oipuru ramo?</li>
+</ol>
+<h3 id="tembiapo-ogapýpe-ñemoñemby-ñembogue-tee">Tembiapo ogapýpe:
+“Ñemoñemby ñembogue tee”</h3>
+<p>Peiporavo umi <strong>mbohapy app peẽ ndive peipuruvévape</strong> AI
+oikéva (Snapchat, Instagram, TikTok, ChatGPT, Gemini, Character.AI,
+ta’anga edit, parlante katupyry). Káda peteĩme oñondive: 1. Peavri
+ñemoñemby configuración. 2. Pejuhu pe “data ojepurúva imbo’erã” térã
+“ore modelo omoporãve hag̃ua” ha pejehecha pesẽtapa. 3. Pehecha mba’épa
+oñembohasa mbohapyhápe. 4. Pejehecha mba’épa oñongatumi ñomongeta
+history-pe ha pemboguete umi ndoikoteveiva.</p>
+<p>Pejapo peteĩ apunte oñondiveguáva mba’e káda peteĩ omoambuekue
+rehegua. Pehecha ko liste káda 6 jasy.</p>
+<h3 id="tuvakuérape-guarã">Tuvakuérape g̃uarã</h3>
+<ul>
+<li><a
+href="https://www.commonsensemedia.org/research/teens-trust-and-technology-in-the-age-of-ai-companions">Common
+Sense — Teens &amp; AI Companions</a></li>
+<li><a href="https://www.eff.org/issues/student-privacy">EFF — Student
+Privacy</a></li>
+<li><a
+href="https://www.unesco.org/en/legal-affairs/recommendation-ethics-artificial-intelligence">UNESCO
+— Ethics of AI</a></li>
+<li><a
+href="https://foundation.mozilla.org/en/privacynotincluded/">Mozilla —
+Privacy Not Included</a></li>
+</ul>
+<h3 id="ñembojepyamongeta">Ñembojepy’amongeta</h3>
+<p><em>Mba’épa peteĩ mba’e ndereheguáva eñembojeguarãma araka’eve
+ndoreraháiva AI tembiporúpe?</em></p>
+<hr />
+
+<div class="pager"><a class="outline" href="w2.html">← Tenondegua</a><a href="w4.html">Upei →</a></div>
+<div class="footer-note">
+  Free under CC BY-SA 4.0 · From <a href="https://kiwidialectic.substack.com">The Kiwi Dialectic</a> ·
+  <a href="https://github.com/robertmccallnz/ai-literacy-for-families">Edit / translate / fork on GitHub</a>
+</div>
+</main>
+</div>
+</body>
+</html>

@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="mi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wiki 6 — Whakaatu i ngā Ritenga Hangarau Whakawhirinaki — AI Literacy for Families</title>
+<style>
+:root {
+  --ink: #111;
+  --paper: #f8f5ee;
+  --rule: #111;
+  --accent: #b3000c;
+  --muted: #5a5550;
+  --soft: #efe9dc;
+  --sidebar-bg: #efe9dc;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
+}
+@media (max-width: 880px) {
+  .layout { grid-template-columns: 1fr; }
+}
+
+aside.sidebar {
+  background: var(--sidebar-bg);
+  border-right: 1px solid #d8d2c4;
+  padding: 28px 22px 40px;
+  position: sticky; top: 0;
+  align-self: start;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+@media (max-width: 880px) {
+  aside.sidebar { position: static; max-height: none; }
+}
+
+.sidebar h2 {
+  font-family: "Iowan Old Style", Georgia, serif;
+  font-size: 20px;
+  font-weight: 900;
+  margin: 0 0 4px;
+  letter-spacing: -0.01em;
+}
+.sidebar .subtitle {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  margin: 0 0 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #c8bfa6;
+}
+.sidebar nav { margin-top: 12px; }
+.sidebar nav h3 {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--muted);
+  margin: 18px 0 6px;
+}
+.sidebar nav ol, .sidebar nav ul {
+  list-style: none;
+  padding: 0; margin: 0;
+}
+.sidebar nav li { margin: 0; }
+.sidebar nav a {
+  display: block;
+  padding: 7px 10px;
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 15px;
+  border-left: 3px solid transparent;
+}
+.sidebar nav a:hover { background: rgba(0,0,0,0.04); }
+.sidebar nav a.active {
+  background: var(--paper);
+  border-left-color: var(--accent);
+  font-weight: 700;
+}
+.lang-switch select {
+  width: 100%;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  padding: 6px 8px;
+  background: var(--paper);
+  border: 1px solid #c8bfa6;
+}
+.draft-pill {
+  display: inline-block;
+  background: #ffefcc;
+  border: 1px solid #d6a700;
+  color: #5a4400;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  padding: 2px 6px;
+  margin-left: 6px;
+  border-radius: 2px;
+}
+
+main.content {
+  padding: 40px clamp(20px, 5vw, 60px) 80px;
+  max-width: 820px;
+}
+
+main h1 {
+  font-family: "Iowan Old Style", "Times New Roman", serif;
+  font-weight: 900;
+  font-size: clamp(30px, 4.5vw, 44px);
+  line-height: 1.08;
+  margin: 0 0 18px;
+  letter-spacing: -0.01em;
+  border-bottom: 2px solid var(--rule);
+  padding-bottom: 10px;
+}
+main h2 {
+  font-family: "Iowan Old Style", Georgia, serif;
+  font-weight: 800;
+  font-size: 26px;
+  margin: 1.5em 0 0.4em;
+  border-bottom: 1px solid #d8d2c4;
+  padding-bottom: 4px;
+}
+main h3 {
+  font-family: "Iowan Old Style", Georgia, serif;
+  font-weight: 700;
+  font-size: 20px;
+  margin: 1.4em 0 0.3em;
+}
+main h4 {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--muted);
+  margin: 1.2em 0 0.2em;
+}
+main p { margin: 0.7em 0; }
+main a { color: var(--accent); }
+main ul, main ol { margin: 0.6em 0 0.6em 1.4em; }
+main li { margin: 0.25em 0; }
+main blockquote {
+  border-left: 4px solid var(--accent);
+  padding: 8px 14px;
+  margin: 1em 0;
+  background: rgba(0,0,0,0.03);
+  font-style: italic;
+  color: #333;
+}
+main hr { border: none; border-top: 1px solid #d8d2c4; margin: 1.6em 0; }
+main code {
+  font-family: "Iowan Old Style Mono", "Menlo", monospace;
+  background: rgba(0,0,0,0.05);
+  padding: 1px 5px;
+  font-size: 0.95em;
+}
+main pre {
+  background: #f0ece4;
+  border: 1px solid #d8d2c4;
+  padding: 12px 16px;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.4;
+}
+main table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+}
+main th, main td {
+  border: 1px solid #c8bfa6;
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+  font-size: 15px;
+}
+main th { background: var(--soft); font-weight: 700; }
+
+.pager {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.pager a {
+  display: inline-block;
+  padding: 10px 14px;
+  background: var(--ink);
+  color: var(--paper);
+  text-decoration: none;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  border: 2px solid var(--ink);
+}
+.pager a:hover { background: var(--accent); border-color: var(--accent); }
+.pager a.outline { background: var(--paper); color: var(--ink); }
+.pager a.outline:hover { color: white; }
+.pager .placeholder { visibility: hidden; }
+
+.crumbs {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.crumbs a { color: var(--muted); text-decoration: none; }
+.crumbs a:hover { color: var(--accent); }
+
+.footer-note {
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid #d8d2c4;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+}
+.footer-note a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+  <h2>AI Literacy </h2>
+  <div class="subtitle">Te Reo Māori · He akoranga 6-wiki mō ngā mātua me ngā taiohi</div>
+  <div class="lang-switch">
+    <select onchange="if(this.value) window.location.href=this.value">
+      <option value="../en/w6.html">English</option><option value="../mi/w6.html" selected>Te Reo Māori</option><option value="../sm/w6.html">Gagana Sāmoa</option><option value="../pt-BR/w6.html">Português (Brasil)</option><option value="../gn/w6.html">Avañe&#x27;ẽ / Guaraní ⚠</option><option value="../pjt/w6.html">Pitjantjatjara ⚠</option>
+    </select>
+  </div>
+  <nav>
+    <h3>Modules</h3>
+    <ul>
+      <li><a href="index.html">Tirohanga whānui o te Akoranga</a></li><li><a href="w1.html">Wiki 1</a></li><li><a href="w2.html">Wiki 2</a></li><li><a href="w3.html">Wiki 3</a></li><li><a href="w4.html">Wiki 4</a></li><li><a href="w5.html">Wiki 5</a></li><li><a href="w6.html" class="active">Wiki 6</a></li><li><a href="wrap-up.html">Whakamutunga o te Akoranga</a></li>
+    </ul>
+    <h3>Materials</h3>
+    <ul>
+      <li><a href="../../translations/pdf/ai_literacy_course.mi.pdf" target="_blank">Course PDF</a></li>
+      <li><a href="../../translations/pdf/ai_literacy_workbook.mi.pdf" target="_blank">Workbook PDF</a></li>
+      <li><a href="../../translations/pdf/ai_literacy_social_kit.mi.pdf" target="_blank">Social kit PDF</a></li>
+    </ul>
+    <h3>More</h3>
+    <ul>
+      <li><a href="../../index.html">← Ngā reo katoa</a></li>
+      <li><a href="https://kiwidialectic.substack.com" target="_blank">Substack</a></li>
+      <li><a href="https://github.com/robertmccallnz/ai-literacy-for-families" target="_blank">GitHub</a></li>
+    </ul>
+  </nav>
+</aside>
+<main class="content">
+<div class="crumbs"><a href="../../index.html">AI Literacy for Families</a> · Te Reo Māori</div>
+<h2 id="wiki-6-whakaatu-i-ngā-ritenga-hangarau-whakawhirinaki">Wiki 6 —
+Whakaatu i ngā Ritenga Hangarau Whakawhirinaki</h2>
+<h3 id="ngā-whāinga-ako">Ngā whāinga ako</h3>
+<ul>
+<li>Kia mārama ka ako te taiohi i ngā ritenga hangarau nā te mātakitaki
+i ngā pakeke.</li>
+<li>Tautohutia ngā mahi ka whakatauiratia e ia mema o te whānau — me ngā
+mea ka mutu.</li>
+<li>Hangaia he ritenga ka mau tonu kia kore ai ngā akoranga e ngaro i
+ngā marama e toru.</li>
+</ul>
+<h3 id="ngā-ariā-matua">Ngā ariā matua</h3>
+<p>Ka tae te rangahau o ngā ritenga pāpāho whānau ki te whakataunga
+kotahi: ko ngā mahi a te mātua he kaha ake i ngā ture katoa hei
+whakatika i te hononga o te tamaiti ki te hangarau. Ki te kei runga te
+waea o te mātua i te tēpu kai, kāore te ture “kaua he waea i te tēpu” e
+mau. Mēnā kāore te mātua e kī “Kāore au e mōhio — me tirotiro”, kāore
+hoki te taiohi. Ka huri tēnei wiki i te ataata. Ka tuku oati anō ngā
+mātua mō ā rātou hurihanga.</p>
+<h3 id="ngā-pātai-kōrerorero">Ngā pātai kōrerorero</h3>
+<ol type="1">
+<li>Mātua: he aha tō ritenga hangarau e whakamā ai koe mēnā ka kapehia
+tonu e tō taiohi? Taiohi: te pātai anō ki a koe.</li>
+<li>Āhea i kite ai kōrua i tētahi ki tētahi e whakatakoto ana i tana
+taputapu kia tino noho tahi? He pēhea te āhua?</li>
+<li>He pēhea te whakamahi <strong>pai</strong> o te AI i tēnei whare?
+Kōrerohia kia toru ngā tauira tūturu kua mahia kē i ngā wiki e ono kua
+taha.</li>
+<li>He aha tāu e hiahia ana mō te hononga o tō whānau ki te hangarau i
+ngā tau e rima? Hokia whakamuri: he aha tāu e mahi ai i tēnei marama kia
+haere tika ai?</li>
+<li>He aha tāu i ako i tētahi i tētahi i tēnei akoranga, kāore koe i
+tūmanako?</li>
+</ol>
+<h3 id="mahi-ā-kāinga-te-oati-ataata-te-hui-ā-marama">Mahi-ā-kāinga: “Te
+oati ataata + te hui ā-marama”</h3>
+<p><strong>Wāhanga A — Ngā oati ataata.</strong> Tuhia e ia tangata kia
+<strong>toru</strong> ngā mahi ka hurihia, ka kitea e tērā atu. Hei
+tauira: - “Ka waiho e ahau taku waea i te kīhini i te wā kai.” - “Ka kī
+au ki te whakamahi au i te AI hei tuhi.” - “Ka pātai ahau i mua i te
+tuari whakaahua ōu.” - “Kāore au e whakamahi i taku taupānga hoa AI i
+ngā pō kura.”</p>
+<p>Whakawhitiwhitia ngā rārangi. Whakairia ki te pouaka makariri.</p>
+<p><strong>Wāhanga B — Whakaritea te hui.</strong> Whakaurua he hui
+ā-whānau 30 meneti i te maramataka — ia marama te pai. E toru ngā pātai
+i ia hui: 1. He aha te āwhina o te AI i tēnei marama? 2. He aha te utu i
+a tātou i tēnei marama? 3. He pai tonu tā tātou whakaaetanga, me
+whakatika rānei?</p>
+<h3 id="rauemi-mā-ngā-mātua">Rauemi mā ngā mātua</h3>
+<ul>
+<li><a
+href="https://www.commonsense.org/education/digital-citizenship">Common
+Sense Media — Digital Literacy &amp; Well-Being</a></li>
+<li><a
+href="https://www.aap.org/en/patient-care/media-and-children/">AAP —
+Media and Children</a></li>
+<li><a href="https://www.humanetech.com/take-control">Center for Humane
+Technology — Take Control</a></li>
+<li><a href="https://dayofai.org/">Day of AI</a></li>
+</ul>
+<h3 id="whakaaroaro">Whakaaroaro</h3>
+<p><em>“Ko te mea nui i ako au i tēnei akoranga ko ___. Ko taku mahi
+tuatahi ka rerekē āpōpō ko ___.”</em></p>
+<hr />
+
+<div class="pager"><a class="outline" href="w5.html">← O mua</a><a href="wrap-up.html">Muri →</a></div>
+<div class="footer-note">
+  Free under CC BY-SA 4.0 · From <a href="https://kiwidialectic.substack.com">The Kiwi Dialectic</a> ·
+  <a href="https://github.com/robertmccallnz/ai-literacy-for-families">Edit / translate / fork on GitHub</a>
+</div>
+</main>
+</div>
+</body>
+</html>

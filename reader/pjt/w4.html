@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="pjt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 4 — Tjukurpa palya mulamula nintiringkunytjaku / Critical thinking and fact-checking — AI Literacy for Families</title>
+<style>
+:root {
+  --ink: #111;
+  --paper: #f8f5ee;
+  --rule: #111;
+  --accent: #b3000c;
+  --muted: #5a5550;
+  --soft: #efe9dc;
+  --sidebar-bg: #efe9dc;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
+}
+@media (max-width: 880px) {
+  .layout { grid-template-columns: 1fr; }
+}
+
+aside.sidebar {
+  background: var(--sidebar-bg);
+  border-right: 1px solid #d8d2c4;
+  padding: 28px 22px 40px;
+  position: sticky; top: 0;
+  align-self: start;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+@media (max-width: 880px) {
+  aside.sidebar { position: static; max-height: none; }
+}
+
+.sidebar h2 {
+  font-family: "Iowan Old Style", Georgia, serif;
+  font-size: 20px;
+  font-weight: 900;
+  margin: 0 0 4px;
+  letter-spacing: -0.01em;
+}
+.sidebar .subtitle {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  margin: 0 0 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #c8bfa6;
+}
+.sidebar nav { margin-top: 12px; }
+.sidebar nav h3 {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--muted);
+  margin: 18px 0 6px;
+}
+.sidebar nav ol, .sidebar nav ul {
+  list-style: none;
+  padding: 0; margin: 0;
+}
+.sidebar nav li { margin: 0; }
+.sidebar nav a {
+  display: block;
+  padding: 7px 10px;
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 15px;
+  border-left: 3px solid transparent;
+}
+.sidebar nav a:hover { background: rgba(0,0,0,0.04); }
+.sidebar nav a.active {
+  background: var(--paper);
+  border-left-color: var(--accent);
+  font-weight: 700;
+}
+.lang-switch select {
+  width: 100%;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  padding: 6px 8px;
+  background: var(--paper);
+  border: 1px solid #c8bfa6;
+}
+.draft-pill {
+  display: inline-block;
+  background: #ffefcc;
+  border: 1px solid #d6a700;
+  color: #5a4400;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  padding: 2px 6px;
+  margin-left: 6px;
+  border-radius: 2px;
+}
+
+main.content {
+  padding: 40px clamp(20px, 5vw, 60px) 80px;
+  max-width: 820px;
+}
+
+main h1 {
+  font-family: "Iowan Old Style", "Times New Roman", serif;
+  font-weight: 900;
+  font-size: clamp(30px, 4.5vw, 44px);
+  line-height: 1.08;
+  margin: 0 0 18px;
+  letter-spacing: -0.01em;
+  border-bottom: 2px solid var(--rule);
+  padding-bottom: 10px;
+}
+main h2 {
+  font-family: "Iowan Old Style", Georgia, serif;
+  font-weight: 800;
+  font-size: 26px;
+  margin: 1.5em 0 0.4em;
+  border-bottom: 1px solid #d8d2c4;
+  padding-bottom: 4px;
+}
+main h3 {
+  font-family: "Iowan Old Style", Georgia, serif;
+  font-weight: 700;
+  font-size: 20px;
+  margin: 1.4em 0 0.3em;
+}
+main h4 {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--muted);
+  margin: 1.2em 0 0.2em;
+}
+main p { margin: 0.7em 0; }
+main a { color: var(--accent); }
+main ul, main ol { margin: 0.6em 0 0.6em 1.4em; }
+main li { margin: 0.25em 0; }
+main blockquote {
+  border-left: 4px solid var(--accent);
+  padding: 8px 14px;
+  margin: 1em 0;
+  background: rgba(0,0,0,0.03);
+  font-style: italic;
+  color: #333;
+}
+main hr { border: none; border-top: 1px solid #d8d2c4; margin: 1.6em 0; }
+main code {
+  font-family: "Iowan Old Style Mono", "Menlo", monospace;
+  background: rgba(0,0,0,0.05);
+  padding: 1px 5px;
+  font-size: 0.95em;
+}
+main pre {
+  background: #f0ece4;
+  border: 1px solid #d8d2c4;
+  padding: 12px 16px;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.4;
+}
+main table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+}
+main th, main td {
+  border: 1px solid #c8bfa6;
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+  font-size: 15px;
+}
+main th { background: var(--soft); font-weight: 700; }
+
+.pager {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.pager a {
+  display: inline-block;
+  padding: 10px 14px;
+  background: var(--ink);
+  color: var(--paper);
+  text-decoration: none;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  border: 2px solid var(--ink);
+}
+.pager a:hover { background: var(--accent); border-color: var(--accent); }
+.pager a.outline { background: var(--paper); color: var(--ink); }
+.pager a.outline:hover { color: white; }
+.pager .placeholder { visibility: hidden; }
+
+.crumbs {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.crumbs a { color: var(--muted); text-decoration: none; }
+.crumbs a:hover { color: var(--accent); }
+
+.footer-note {
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid #d8d2c4;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+}
+.footer-note a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+  <h2>AI Literacy <span class="draft-pill">working draft</span></h2>
+  <div class="subtitle">Pitjantjatjara · Bilingual draft — Anangu review invited</div>
+  <div class="lang-switch">
+    <select onchange="if(this.value) window.location.href=this.value">
+      <option value="../en/w4.html">English</option><option value="../mi/w4.html">Te Reo Māori</option><option value="../sm/w4.html">Gagana Sāmoa</option><option value="../pt-BR/w4.html">Português (Brasil)</option><option value="../gn/w4.html">Avañe&#x27;ẽ / Guaraní ⚠</option><option value="../pjt/w4.html" selected>Pitjantjatjara ⚠</option>
+    </select>
+  </div>
+  <nav>
+    <h3>Modules</h3>
+    <ul>
+      <li><a href="index.html">Course Overview</a></li><li><a href="w1.html">Week 1</a></li><li><a href="w2.html">Week 2</a></li><li><a href="w3.html">Week 3</a></li><li><a href="w4.html" class="active">Week 4</a></li><li><a href="w5.html">Week 5</a></li><li><a href="w6.html">Week 6</a></li><li><a href="wrap-up.html">Course Wrap-Up</a></li>
+    </ul>
+    <h3>Materials</h3>
+    <ul>
+      <li><a href="../../translations/pdf/ai_literacy_course.pjt.pdf" target="_blank">Course PDF</a></li>
+      <li><a href="../../translations/pdf/ai_literacy_workbook.pjt.pdf" target="_blank">Workbook PDF</a></li>
+      <li><a href="../../translations/pdf/ai_literacy_social_kit.pjt.pdf" target="_blank">Social kit PDF</a></li>
+    </ul>
+    <h3>More</h3>
+    <ul>
+      <li><a href="../../index.html">← All languages</a></li>
+      <li><a href="https://kiwidialectic.substack.com" target="_blank">Substack</a></li>
+      <li><a href="https://github.com/robertmccallnz/ai-literacy-for-families" target="_blank">GitHub</a></li>
+    </ul>
+  </nav>
+</aside>
+<main class="content">
+<div class="crumbs"><a href="../../index.html">AI Literacy for Families</a> · Pitjantjatjara</div>
+<h2
+id="week-4-tjukurpa-palya-mulamula-nintiringkunytjaku-critical-thinking-and-fact-checking">Week
+4 — Tjukurpa palya mulamula nintiringkunytjaku / Critical thinking and
+fact-checking</h2>
+<p><strong>Pitj:</strong> AI watjala tjukurpa kuṉpu — palunya kuṟu
+(lie). AI palyani fake court case, fake quote, fake science citation.
+Strong voice wiya mulamula correct. Defence-pa: tool wiya — habit pulka.
+<strong>SIFT</strong> — four step: <strong>S</strong>top,
+<strong>I</strong>nvestigate source, <strong>F</strong>ind better story,
+<strong>T</strong>race claim back to original.</p>
+<p><strong>Eng:</strong> AI confidently produces false information —
+fake legal cases, invented historical quotes, made-up scientific
+citations. Confidence is not accuracy. The best defence is not a tool —
+it’s a habit. The <strong>SIFT</strong> method: <strong>S</strong>top,
+<strong>I</strong>nvestigate the source, <strong>F</strong>ind better
+coverage, <strong>T</strong>race claims back to original context.</p>
+<h3 id="discussion">Discussion</h3>
+<ol type="1">
+<li>Iriti online — believed something wrong. Nyaa believable? Nyaa would
+have caught it?</li>
+<li>AI invent fact — confidence pulka — nyaa? (Hint: Week 1.)</li>
+<li>TikTok, AI summary, news article — same — three source palya? Or one
+source palya?</li>
+<li><em>“Wiya kulini”</em> (I don’t know) — <em>“Looked it up, wiya
+mulamula”</em> (looked it up, not true) — tjukurpa kutjara mulapa?</li>
+</ol>
+<h3 id="activity-palyani-catch-the-ai-lying">Activity / Palyani: “Catch
+the AI lying”</h3>
+<p>Together design five questions where the correct answer is something
+you each know well — a family member’s job, the plot of a favourite
+book, a local sports result, a niche hobby fact, a historical event from
+your country/community. Ask the AI each question and rate: -
+<strong>Correct</strong> - <strong>Partly correct (with
+mistakes)</strong> - <strong>Confidently wrong</strong> -
+<strong>Refused / hedged</strong></p>
+<p>For each “confidently wrong” one, run it through SIFT together.
+Discuss: would you have caught this if you didn’t already know?</p>
+<h3 id="parent-resources">Parent resources</h3>
+<ul>
+<li><a
+href="https://guides.lib.uchicago.edu/c.php?g=1241077&amp;p=9082322">University
+of Chicago — SIFT</a></li>
+<li><a href="https://newslit.org/educators/checkology/">News Literacy
+Project</a></li>
+<li><a href="https://www.snopes.com/">Snopes</a></li>
+</ul>
+<h3 id="reflection">Reflection</h3>
+<p><em>“Week-ngka AI ngayuluku catch-ani kuṟu-tjara ___-tjara. Catch-ani
+___ -tjara.”</em> <em>“This week I caught AI being wrong about ___. I
+caught it because ___.”</em></p>
+<hr />
+
+<div class="pager"><a class="outline" href="w3.html">← Previous</a><a href="w5.html">Next →</a></div>
+<div class="footer-note">
+  Free under CC BY-SA 4.0 · From <a href="https://kiwidialectic.substack.com">The Kiwi Dialectic</a> ·
+  <a href="https://github.com/robertmccallnz/ai-literacy-for-families">Edit / translate / fork on GitHub</a>
+</div>
+</main>
+</div>
+</body>
+</html>

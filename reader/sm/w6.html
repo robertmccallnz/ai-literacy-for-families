@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="sm">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vaiaso 6 — Fa&#x27;ata&#x27;ita&#x27;iga o Masaniga Tekonolosi Tatau — AI Literacy for Families</title>
+<style>
+:root {
+  --ink: #111;
+  --paper: #f8f5ee;
+  --rule: #111;
+  --accent: #b3000c;
+  --muted: #5a5550;
+  --soft: #efe9dc;
+  --sidebar-bg: #efe9dc;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
+}
+@media (max-width: 880px) {
+  .layout { grid-template-columns: 1fr; }
+}
+
+aside.sidebar {
+  background: var(--sidebar-bg);
+  border-right: 1px solid #d8d2c4;
+  padding: 28px 22px 40px;
+  position: sticky; top: 0;
+  align-self: start;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+@media (max-width: 880px) {
+  aside.sidebar { position: static; max-height: none; }
+}
+
+.sidebar h2 {
+  font-family: "Iowan Old Style", Georgia, serif;
+  font-size: 20px;
+  font-weight: 900;
+  margin: 0 0 4px;
+  letter-spacing: -0.01em;
+}
+.sidebar .subtitle {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  margin: 0 0 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #c8bfa6;
+}
+.sidebar nav { margin-top: 12px; }
+.sidebar nav h3 {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--muted);
+  margin: 18px 0 6px;
+}
+.sidebar nav ol, .sidebar nav ul {
+  list-style: none;
+  padding: 0; margin: 0;
+}
+.sidebar nav li { margin: 0; }
+.sidebar nav a {
+  display: block;
+  padding: 7px 10px;
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 15px;
+  border-left: 3px solid transparent;
+}
+.sidebar nav a:hover { background: rgba(0,0,0,0.04); }
+.sidebar nav a.active {
+  background: var(--paper);
+  border-left-color: var(--accent);
+  font-weight: 700;
+}
+.lang-switch select {
+  width: 100%;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  padding: 6px 8px;
+  background: var(--paper);
+  border: 1px solid #c8bfa6;
+}
+.draft-pill {
+  display: inline-block;
+  background: #ffefcc;
+  border: 1px solid #d6a700;
+  color: #5a4400;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  padding: 2px 6px;
+  margin-left: 6px;
+  border-radius: 2px;
+}
+
+main.content {
+  padding: 40px clamp(20px, 5vw, 60px) 80px;
+  max-width: 820px;
+}
+
+main h1 {
+  font-family: "Iowan Old Style", "Times New Roman", serif;
+  font-weight: 900;
+  font-size: clamp(30px, 4.5vw, 44px);
+  line-height: 1.08;
+  margin: 0 0 18px;
+  letter-spacing: -0.01em;
+  border-bottom: 2px solid var(--rule);
+  padding-bottom: 10px;
+}
+main h2 {
+  font-family: "Iowan Old Style", Georgia, serif;
+  font-weight: 800;
+  font-size: 26px;
+  margin: 1.5em 0 0.4em;
+  border-bottom: 1px solid #d8d2c4;
+  padding-bottom: 4px;
+}
+main h3 {
+  font-family: "Iowan Old Style", Georgia, serif;
+  font-weight: 700;
+  font-size: 20px;
+  margin: 1.4em 0 0.3em;
+}
+main h4 {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--muted);
+  margin: 1.2em 0 0.2em;
+}
+main p { margin: 0.7em 0; }
+main a { color: var(--accent); }
+main ul, main ol { margin: 0.6em 0 0.6em 1.4em; }
+main li { margin: 0.25em 0; }
+main blockquote {
+  border-left: 4px solid var(--accent);
+  padding: 8px 14px;
+  margin: 1em 0;
+  background: rgba(0,0,0,0.03);
+  font-style: italic;
+  color: #333;
+}
+main hr { border: none; border-top: 1px solid #d8d2c4; margin: 1.6em 0; }
+main code {
+  font-family: "Iowan Old Style Mono", "Menlo", monospace;
+  background: rgba(0,0,0,0.05);
+  padding: 1px 5px;
+  font-size: 0.95em;
+}
+main pre {
+  background: #f0ece4;
+  border: 1px solid #d8d2c4;
+  padding: 12px 16px;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.4;
+}
+main table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+}
+main th, main td {
+  border: 1px solid #c8bfa6;
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+  font-size: 15px;
+}
+main th { background: var(--soft); font-weight: 700; }
+
+.pager {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.pager a {
+  display: inline-block;
+  padding: 10px 14px;
+  background: var(--ink);
+  color: var(--paper);
+  text-decoration: none;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  border: 2px solid var(--ink);
+}
+.pager a:hover { background: var(--accent); border-color: var(--accent); }
+.pager a.outline { background: var(--paper); color: var(--ink); }
+.pager a.outline:hover { color: white; }
+.pager .placeholder { visibility: hidden; }
+
+.crumbs {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.crumbs a { color: var(--muted); text-decoration: none; }
+.crumbs a:hover { color: var(--accent); }
+
+.footer-note {
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid #d8d2c4;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+}
+.footer-note a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+  <h2>AI Literacy </h2>
+  <div class="subtitle">Gagana Sāmoa · O se a&#x27;oa&#x27;oga 6-vaiaso mo mātua ma talavou</div>
+  <div class="lang-switch">
+    <select onchange="if(this.value) window.location.href=this.value">
+      <option value="../en/w6.html">English</option><option value="../mi/w6.html">Te Reo Māori</option><option value="../sm/w6.html" selected>Gagana Sāmoa</option><option value="../pt-BR/w6.html">Português (Brasil)</option><option value="../gn/w6.html">Avañe&#x27;ẽ / Guaraní ⚠</option><option value="../pjt/w6.html">Pitjantjatjara ⚠</option>
+    </select>
+  </div>
+  <nav>
+    <h3>Modules</h3>
+    <ul>
+      <li><a href="index.html">Va&#x27;aiga lautele</a></li><li><a href="w1.html">Vaiaso 1</a></li><li><a href="w2.html">Vaiaso 2</a></li><li><a href="w3.html">Vaiaso 3</a></li><li><a href="w4.html">Vaiaso 4</a></li><li><a href="w5.html">Vaiaso 5</a></li><li><a href="w6.html" class="active">Vaiaso 6</a></li><li><a href="wrap-up.html">Fa&#x27;ai&#x27;uga o le A&#x27;oa&#x27;oga</a></li>
+    </ul>
+    <h3>Materials</h3>
+    <ul>
+      <li><a href="../../translations/pdf/ai_literacy_course.sm.pdf" target="_blank">Course PDF</a></li>
+      <li><a href="../../translations/pdf/ai_literacy_workbook.sm.pdf" target="_blank">Workbook PDF</a></li>
+      <li><a href="../../translations/pdf/ai_literacy_social_kit.sm.pdf" target="_blank">Social kit PDF</a></li>
+    </ul>
+    <h3>More</h3>
+    <ul>
+      <li><a href="../../index.html">← Gagana uma</a></li>
+      <li><a href="https://kiwidialectic.substack.com" target="_blank">Substack</a></li>
+      <li><a href="https://github.com/robertmccallnz/ai-literacy-for-families" target="_blank">GitHub</a></li>
+    </ul>
+  </nav>
+</aside>
+<main class="content">
+<div class="crumbs"><a href="../../index.html">AI Literacy for Families</a> · Gagana Sāmoa</div>
+<h2 id="vaiaso-6-faataitaiga-o-masaniga-tekonolosi-tatau">Vaiaso 6 —
+Fa’ata’ita’iga o Masaniga Tekonolosi Tatau</h2>
+<h3 id="sini-o-le-aoaoga">Sini o le a’oa’oga</h3>
+<ul>
+<li>Iloa e a’oa’o e talavou le tekonolosi mai le matamata i tagata
+matutua.</li>
+<li>Iloa amio patino e mana’o e fai e tagata ta’itasi o le aiga — ma le
+mea e fia mutu.</li>
+<li>Fau se masani gāoioia e lē mou atu i le tolu masina.</li>
+</ul>
+<h3 id="aoaoga-autū">A’oa’oga autū</h3>
+<p>O su’esu’ega mo le aiga ma le faiga o ata e tau atu i le i’uga lava e
+tasi: o le amio a mātua e fai sili atu le aafiaga i fanau nai lo so’o se
+tulafono. Afai o lo’o iai pea le telefoni o le mātua i le ’aiga, e lē
+galue le tulafono “leai ni telefoni i le ’aiga”. Afai e lē fai e le
+mātua “Ou te lē iloa — se’i ou su’e”, e lē fai foi e le talavou. O lenei
+vaiaso e suia ai le tilotilo. E folafola atu foi e mātua suiga.</p>
+<h3 id="faaoso-talanoaga">Fa’aoso talanoaga</h3>
+<ol type="1">
+<li>Mātua: o le ā lou masani tekonolosi e te ma ai pe a kopi sa’o e lau
+talavou? Talavou: fesili tutusa.</li>
+<li>O anafea le taimi mulimuli na e va’ai ai le tasi e tu’u ese se
+masini e nofo atoa? E fa’apefea le lagona?</li>
+<li>O le ā le foliga, i lenei fale, o le fa’aaogāina
+<strong>lelei</strong> o le AI? Tu’u mai ni fa’ata’ita’iga e tolu kua o
+galu i vaiaso e ono ua tuana’i.</li>
+<li>O le ā tou te mana’o ai i le fegalegaleaiga o lou aiga ma le
+tekonolosi i totonu o le lima tausaga? Toe foi i tua: o le ā e mana’omia
+ona e faia i lenei masina?</li>
+<li>O le ā na e a’oa’oina mai i le isi i lenei a’oa’oga e te lē’i
+fa’amoemoeina?</li>
+</ol>
+<h3 id="gāluega-i-le-eleele-tautoga-faata-iloiloga-masina">Gāluega i le
+’ele’ele: “Tautoga fa’ata + iloiloga masina”</h3>
+<p><strong>Vaega A — Tautoga fa’ata.</strong> Tusi e tagata ta’itasi
+<strong>tolu</strong> amio patino o le a suia, e iloa ai e le isi.
+Fa’ata’ita’iga: - “O le a ou tu’uina lo’u telefoni i le umukuka i le
+taimi o le ’aiga.” - “O le a ou ta’u i le leotele pe a ou fa’aaogā le AI
+e tusi ai.” - “O le a ou fesili a’o le’i tu’u atu se ata ou.” - “Ou te
+lē fa’aaogāina la’u app uō AI i po a’oga.”</p>
+<p>Fefa’asoaa’i lisi. Tu’u i luga o le pusaaisa.</p>
+<p><strong>Vaega B — Fa’aalia le iloiloga.</strong> Tu’u se iloiloga
+aiga 30-minute i le kalena — masina e tasi e talafeagai. Tolu fesili i
+taimi uma: 1. O le ā na fesoasoani ai le AI i lenei masina? 2. O le ā na
+faaalu ai e le AI i lenei masina? 3. O lo’o talafeagai pea le maliega,
+pe e mana’omia se suiga?</p>
+<h3 id="punaoa-mo-mātua">Punaoa mo mātua</h3>
+<ul>
+<li><a
+href="https://www.commonsense.org/education/digital-citizenship">Common
+Sense Media — Digital Literacy</a></li>
+<li><a
+href="https://www.aap.org/en/patient-care/media-and-children/">AAP —
+Media and Children</a></li>
+<li><a href="https://www.humanetech.com/take-control">Center for Humane
+Technology — Take Control</a></li>
+<li><a href="https://dayofai.org/">Day of AI</a></li>
+</ul>
+<h3 id="manatu">Manatu</h3>
+<p><em>“O le mea e sili ona tāua na ou a’oa’oina i lenei a’oa’oga o le
+___. O le mea muamua o le a ou faia eseese i taeao o le ___.”</em></p>
+<hr />
+
+<div class="pager"><a class="outline" href="w5.html">← Tua</a><a href="wrap-up.html">Luma →</a></div>
+<div class="footer-note">
+  Free under CC BY-SA 4.0 · From <a href="https://kiwidialectic.substack.com">The Kiwi Dialectic</a> ·
+  <a href="https://github.com/robertmccallnz/ai-literacy-for-families">Edit / translate / fork on GitHub</a>
+</div>
+</main>
+</div>
+</body>
+</html>

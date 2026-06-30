@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 2 — Bias &amp; Deepfakes — AI Literacy for Families</title>
+<style>
+:root {
+  --ink: #111;
+  --paper: #f8f5ee;
+  --rule: #111;
+  --accent: #b3000c;
+  --muted: #5a5550;
+  --soft: #efe9dc;
+  --sidebar-bg: #efe9dc;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
+}
+@media (max-width: 880px) {
+  .layout { grid-template-columns: 1fr; }
+}
+
+aside.sidebar {
+  background: var(--sidebar-bg);
+  border-right: 1px solid #d8d2c4;
+  padding: 28px 22px 40px;
+  position: sticky; top: 0;
+  align-self: start;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+@media (max-width: 880px) {
+  aside.sidebar { position: static; max-height: none; }
+}
+
+.sidebar h2 {
+  font-family: "Iowan Old Style", Georgia, serif;
+  font-size: 20px;
+  font-weight: 900;
+  margin: 0 0 4px;
+  letter-spacing: -0.01em;
+}
+.sidebar .subtitle {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  margin: 0 0 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #c8bfa6;
+}
+.sidebar nav { margin-top: 12px; }
+.sidebar nav h3 {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--muted);
+  margin: 18px 0 6px;
+}
+.sidebar nav ol, .sidebar nav ul {
+  list-style: none;
+  padding: 0; margin: 0;
+}
+.sidebar nav li { margin: 0; }
+.sidebar nav a {
+  display: block;
+  padding: 7px 10px;
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 15px;
+  border-left: 3px solid transparent;
+}
+.sidebar nav a:hover { background: rgba(0,0,0,0.04); }
+.sidebar nav a.active {
+  background: var(--paper);
+  border-left-color: var(--accent);
+  font-weight: 700;
+}
+.lang-switch select {
+  width: 100%;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  padding: 6px 8px;
+  background: var(--paper);
+  border: 1px solid #c8bfa6;
+}
+.draft-pill {
+  display: inline-block;
+  background: #ffefcc;
+  border: 1px solid #d6a700;
+  color: #5a4400;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  padding: 2px 6px;
+  margin-left: 6px;
+  border-radius: 2px;
+}
+
+main.content {
+  padding: 40px clamp(20px, 5vw, 60px) 80px;
+  max-width: 820px;
+}
+
+main h1 {
+  font-family: "Iowan Old Style", "Times New Roman", serif;
+  font-weight: 900;
+  font-size: clamp(30px, 4.5vw, 44px);
+  line-height: 1.08;
+  margin: 0 0 18px;
+  letter-spacing: -0.01em;
+  border-bottom: 2px solid var(--rule);
+  padding-bottom: 10px;
+}
+main h2 {
+  font-family: "Iowan Old Style", Georgia, serif;
+  font-weight: 800;
+  font-size: 26px;
+  margin: 1.5em 0 0.4em;
+  border-bottom: 1px solid #d8d2c4;
+  padding-bottom: 4px;
+}
+main h3 {
+  font-family: "Iowan Old Style", Georgia, serif;
+  font-weight: 700;
+  font-size: 20px;
+  margin: 1.4em 0 0.3em;
+}
+main h4 {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--muted);
+  margin: 1.2em 0 0.2em;
+}
+main p { margin: 0.7em 0; }
+main a { color: var(--accent); }
+main ul, main ol { margin: 0.6em 0 0.6em 1.4em; }
+main li { margin: 0.25em 0; }
+main blockquote {
+  border-left: 4px solid var(--accent);
+  padding: 8px 14px;
+  margin: 1em 0;
+  background: rgba(0,0,0,0.03);
+  font-style: italic;
+  color: #333;
+}
+main hr { border: none; border-top: 1px solid #d8d2c4; margin: 1.6em 0; }
+main code {
+  font-family: "Iowan Old Style Mono", "Menlo", monospace;
+  background: rgba(0,0,0,0.05);
+  padding: 1px 5px;
+  font-size: 0.95em;
+}
+main pre {
+  background: #f0ece4;
+  border: 1px solid #d8d2c4;
+  padding: 12px 16px;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.4;
+}
+main table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+}
+main th, main td {
+  border: 1px solid #c8bfa6;
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+  font-size: 15px;
+}
+main th { background: var(--soft); font-weight: 700; }
+
+.pager {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.pager a {
+  display: inline-block;
+  padding: 10px 14px;
+  background: var(--ink);
+  color: var(--paper);
+  text-decoration: none;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  border: 2px solid var(--ink);
+}
+.pager a:hover { background: var(--accent); border-color: var(--accent); }
+.pager a.outline { background: var(--paper); color: var(--ink); }
+.pager a.outline:hover { color: white; }
+.pager .placeholder { visibility: hidden; }
+
+.crumbs {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.crumbs a { color: var(--muted); text-decoration: none; }
+.crumbs a:hover { color: var(--accent); }
+
+.footer-note {
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid #d8d2c4;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+}
+.footer-note a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+  <h2>AI Literacy </h2>
+  <div class="subtitle">English · A 6-week course for parents and teens</div>
+  <div class="lang-switch">
+    <select onchange="if(this.value) window.location.href=this.value">
+      <option value="../en/w2.html" selected>English</option><option value="../mi/w2.html">Te Reo Māori</option><option value="../sm/w2.html">Gagana Sāmoa</option><option value="../pt-BR/w2.html">Português (Brasil)</option><option value="../gn/w2.html">Avañe&#x27;ẽ / Guaraní ⚠</option><option value="../pjt/w2.html">Pitjantjatjara ⚠</option>
+    </select>
+  </div>
+  <nav>
+    <h3>Modules</h3>
+    <ul>
+      <li><a href="index.html">Course Overview</a></li><li><a href="w1.html">Week 1</a></li><li><a href="w2.html" class="active">Week 2</a></li><li><a href="w3.html">Week 3</a></li><li><a href="w4.html">Week 4</a></li><li><a href="w5.html">Week 5</a></li><li><a href="w6.html">Week 6</a></li><li><a href="wrap-up.html">Course Wrap-Up</a></li>
+    </ul>
+    <h3>Materials</h3>
+    <ul>
+      <li><a href="../../translations/pdf/ai_literacy_course.en.pdf" target="_blank">Course PDF</a></li>
+      <li><a href="../../translations/pdf/ai_literacy_workbook.en.pdf" target="_blank">Workbook PDF</a></li>
+      <li><a href="../../translations/pdf/ai_literacy_social_kit.en.pdf" target="_blank">Social kit PDF</a></li>
+    </ul>
+    <h3>More</h3>
+    <ul>
+      <li><a href="../../index.html">← All languages</a></li>
+      <li><a href="https://kiwidialectic.substack.com" target="_blank">Substack</a></li>
+      <li><a href="https://github.com/robertmccallnz/ai-literacy-for-families" target="_blank">GitHub</a></li>
+    </ul>
+  </nav>
+</aside>
+<main class="content">
+<div class="crumbs"><a href="../../index.html">AI Literacy for Families</a> · English</div>
+<h2 id="week-2-bias-deepfakes">Week 2 — Bias &amp; Deepfakes</h2>
+<h3 id="learning-objectives">Learning objectives</h3>
+<ul>
+<li>Explain why AI models inherit bias from their training data.</li>
+<li>Identify visual, audio, and contextual cues that suggest a
+deepfake.</li>
+<li>Understand that “looks real” is no longer a reliable test for “is
+real.”</li>
+</ul>
+<h3 id="core-concepts">Core concepts</h3>
+<p>Two related problems sit at the heart of this week.
+<strong>Bias</strong> is structural — an AI trained mostly on one kind
+of voice, face, or worldview will quietly amplify it.
+<strong>Deepfakes</strong> are deliberate — synthetic images, audio, and
+video designed to look authentic. Both rely on the same underlying tech,
+and both require the same defence: lateral verification rather than gut
+feeling.</p>
+<h3 id="discussion-prompts">Discussion prompts</h3>
+<ol type="1">
+<li>If an AI was trained mostly on text from one country, one language,
+or one political viewpoint, how might its answers be skewed? Whose
+voices might be missing?</li>
+<li>Have either of you seen something online recently you suspected was
+AI-generated? What tipped you off — or what failed to?</li>
+<li>Is there a difference between a deepfake made for satire, one made
+for a scam, and one made to harass someone? Should all three be treated
+the same way?</li>
+<li>If a deepfake of you (or a friend) appeared online tomorrow, what
+would you want to happen? Who would you tell first?</li>
+</ol>
+<h3 id="at-home-activity-bias-audit-deepfake-hunt">At-home activity:
+“Bias audit + deepfake hunt”</h3>
+<p><strong>Part A — Bias audit (20 min).</strong> Ask one image
+generator (e.g. ChatGPT’s image tool, Gemini, or a free alternative) to
+produce images for ten neutral prompts: <em>“a CEO,” “a nurse,” “a
+criminal,” “a scientist,” “a person cleaning,” “a wedding,” “a beautiful
+house,” “a homeless person,” “a teenager studying,” “a family at
+dinner.”</em> Don’t add adjectives. Look at the results together: what
+patterns appear in gender, race, age, body type, setting, wealth? What’s
+missing?</p>
+<p><strong>Part B — Deepfake hunt (20 min).</strong> Visit <a
+href="https://deepfakes.virtuality.mit.edu/">MIT’s “Detect Fakes” media
+literacy site</a> and work through their examples together. Then scroll
+your normal social feeds for 10 minutes specifically looking for
+AI-generated images. Compare notes on what gave them away.</p>
+<h3 id="parent-resource-list">Parent resource list</h3>
+<ul>
+<li><a href="https://deepfakes.virtuality.mit.edu/">MIT — Media Literacy
+in the Age of Deepfakes</a> — interactive lessons and examples designed
+for classroom and home use.</li>
+<li><a
+href="https://www.parentspassiton.com/blog/how-to-explain-ai-bias-to-teens-in-simple-terms">Parents
+Pass It On — How to Explain AI Bias to Teens in Simple Terms</a> —
+concrete conversation scripts and comparison exercises.</li>
+<li><a
+href="https://www.commonsensemedia.org/articles/deepfakes-distrust-and-disinformation-the-ai-powered-information-apocalypse">Common
+Sense Media — Deepfakes, Distrust and Disinformation</a> — parent-facing
+primer on synthetic media.</li>
+<li><a href="https://www.ajl.org/">Algorithmic Justice League</a> — Joy
+Buolamwini’s organisation; strong real-world examples of
+facial-recognition bias.</li>
+</ul>
+<h3 id="reflection">Reflection</h3>
+<p><em>Name one piece of media you’ve seen this week that you now want
+to re-examine.</em></p>
+<hr />
+
+<div class="pager"><a class="outline" href="w1.html">← Previous</a><a href="w3.html">Next →</a></div>
+<div class="footer-note">
+  Free under CC BY-SA 4.0 · From <a href="https://kiwidialectic.substack.com">The Kiwi Dialectic</a> ·
+  <a href="https://github.com/robertmccallnz/ai-literacy-for-families">Edit / translate / fork on GitHub</a>
+</div>
+</main>
+</div>
+</body>
+</html>

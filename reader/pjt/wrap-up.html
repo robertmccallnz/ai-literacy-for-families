@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="pjt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Course Wrap-Up / Wiyaringkunytjaku — AI Literacy for Families</title>
+<style>
+:root {
+  --ink: #111;
+  --paper: #f8f5ee;
+  --rule: #111;
+  --accent: #b3000c;
+  --muted: #5a5550;
+  --soft: #efe9dc;
+  --sidebar-bg: #efe9dc;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
+}
+@media (max-width: 880px) {
+  .layout { grid-template-columns: 1fr; }
+}
+
+aside.sidebar {
+  background: var(--sidebar-bg);
+  border-right: 1px solid #d8d2c4;
+  padding: 28px 22px 40px;
+  position: sticky; top: 0;
+  align-self: start;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+@media (max-width: 880px) {
+  aside.sidebar { position: static; max-height: none; }
+}
+
+.sidebar h2 {
+  font-family: "Iowan Old Style", Georgia, serif;
+  font-size: 20px;
+  font-weight: 900;
+  margin: 0 0 4px;
+  letter-spacing: -0.01em;
+}
+.sidebar .subtitle {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  margin: 0 0 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #c8bfa6;
+}
+.sidebar nav { margin-top: 12px; }
+.sidebar nav h3 {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--muted);
+  margin: 18px 0 6px;
+}
+.sidebar nav ol, .sidebar nav ul {
+  list-style: none;
+  padding: 0; margin: 0;
+}
+.sidebar nav li { margin: 0; }
+.sidebar nav a {
+  display: block;
+  padding: 7px 10px;
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 15px;
+  border-left: 3px solid transparent;
+}
+.sidebar nav a:hover { background: rgba(0,0,0,0.04); }
+.sidebar nav a.active {
+  background: var(--paper);
+  border-left-color: var(--accent);
+  font-weight: 700;
+}
+.lang-switch select {
+  width: 100%;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  padding: 6px 8px;
+  background: var(--paper);
+  border: 1px solid #c8bfa6;
+}
+.draft-pill {
+  display: inline-block;
+  background: #ffefcc;
+  border: 1px solid #d6a700;
+  color: #5a4400;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  padding: 2px 6px;
+  margin-left: 6px;
+  border-radius: 2px;
+}
+
+main.content {
+  padding: 40px clamp(20px, 5vw, 60px) 80px;
+  max-width: 820px;
+}
+
+main h1 {
+  font-family: "Iowan Old Style", "Times New Roman", serif;
+  font-weight: 900;
+  font-size: clamp(30px, 4.5vw, 44px);
+  line-height: 1.08;
+  margin: 0 0 18px;
+  letter-spacing: -0.01em;
+  border-bottom: 2px solid var(--rule);
+  padding-bottom: 10px;
+}
+main h2 {
+  font-family: "Iowan Old Style", Georgia, serif;
+  font-weight: 800;
+  font-size: 26px;
+  margin: 1.5em 0 0.4em;
+  border-bottom: 1px solid #d8d2c4;
+  padding-bottom: 4px;
+}
+main h3 {
+  font-family: "Iowan Old Style", Georgia, serif;
+  font-weight: 700;
+  font-size: 20px;
+  margin: 1.4em 0 0.3em;
+}
+main h4 {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--muted);
+  margin: 1.2em 0 0.2em;
+}
+main p { margin: 0.7em 0; }
+main a { color: var(--accent); }
+main ul, main ol { margin: 0.6em 0 0.6em 1.4em; }
+main li { margin: 0.25em 0; }
+main blockquote {
+  border-left: 4px solid var(--accent);
+  padding: 8px 14px;
+  margin: 1em 0;
+  background: rgba(0,0,0,0.03);
+  font-style: italic;
+  color: #333;
+}
+main hr { border: none; border-top: 1px solid #d8d2c4; margin: 1.6em 0; }
+main code {
+  font-family: "Iowan Old Style Mono", "Menlo", monospace;
+  background: rgba(0,0,0,0.05);
+  padding: 1px 5px;
+  font-size: 0.95em;
+}
+main pre {
+  background: #f0ece4;
+  border: 1px solid #d8d2c4;
+  padding: 12px 16px;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.4;
+}
+main table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+}
+main th, main td {
+  border: 1px solid #c8bfa6;
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+  font-size: 15px;
+}
+main th { background: var(--soft); font-weight: 700; }
+
+.pager {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.pager a {
+  display: inline-block;
+  padding: 10px 14px;
+  background: var(--ink);
+  color: var(--paper);
+  text-decoration: none;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  border: 2px solid var(--ink);
+}
+.pager a:hover { background: var(--accent); border-color: var(--accent); }
+.pager a.outline { background: var(--paper); color: var(--ink); }
+.pager a.outline:hover { color: white; }
+.pager .placeholder { visibility: hidden; }
+
+.crumbs {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.crumbs a { color: var(--muted); text-decoration: none; }
+.crumbs a:hover { color: var(--accent); }
+
+.footer-note {
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid #d8d2c4;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+}
+.footer-note a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+  <h2>AI Literacy <span class="draft-pill">working draft</span></h2>
+  <div class="subtitle">Pitjantjatjara · Bilingual draft — Anangu review invited</div>
+  <div class="lang-switch">
+    <select onchange="if(this.value) window.location.href=this.value">
+      <option value="../en/wrap-up.html">English</option><option value="../mi/wrap-up.html">Te Reo Māori</option><option value="../sm/wrap-up.html">Gagana Sāmoa</option><option value="../pt-BR/wrap-up.html">Português (Brasil)</option><option value="../gn/wrap-up.html">Avañe&#x27;ẽ / Guaraní ⚠</option><option value="../pjt/wrap-up.html" selected>Pitjantjatjara ⚠</option>
+    </select>
+  </div>
+  <nav>
+    <h3>Modules</h3>
+    <ul>
+      <li><a href="index.html">Course Overview</a></li><li><a href="w1.html">Week 1</a></li><li><a href="w2.html">Week 2</a></li><li><a href="w3.html">Week 3</a></li><li><a href="w4.html">Week 4</a></li><li><a href="w5.html">Week 5</a></li><li><a href="w6.html">Week 6</a></li><li><a href="wrap-up.html" class="active">Course Wrap-Up</a></li>
+    </ul>
+    <h3>Materials</h3>
+    <ul>
+      <li><a href="../../translations/pdf/ai_literacy_course.pjt.pdf" target="_blank">Course PDF</a></li>
+      <li><a href="../../translations/pdf/ai_literacy_workbook.pjt.pdf" target="_blank">Workbook PDF</a></li>
+      <li><a href="../../translations/pdf/ai_literacy_social_kit.pjt.pdf" target="_blank">Social kit PDF</a></li>
+    </ul>
+    <h3>More</h3>
+    <ul>
+      <li><a href="../../index.html">← All languages</a></li>
+      <li><a href="https://kiwidialectic.substack.com" target="_blank">Substack</a></li>
+      <li><a href="https://github.com/robertmccallnz/ai-literacy-for-families" target="_blank">GitHub</a></li>
+    </ul>
+  </nav>
+</aside>
+<main class="content">
+<div class="crumbs"><a href="../../index.html">AI Literacy for Families</a> · Pitjantjatjara</div>
+<h2 id="course-wrap-up-wiyaringkunytjaku">Course Wrap-Up /
+Wiyaringkunytjaku</h2>
+<p>By the end of these six weeks, together you should have:</p>
+<ul>
+<li>Shared vocabulary for talking about AI without panic or hype</li>
+<li>A signed household AI agreement with a review date</li>
+<li>SIFT habit + privacy-clean accounts</li>
+<li>A scheduled monthly check-in</li>
+<li>Three concrete behaviour changes each that the other family member
+will notice</li>
+</ul>
+<p>Technology keeps changing. This course doesn’t give you a finished
+answer — it gives you the <strong>shared muscle</strong> of asking the
+next question together. Walytja-ngka mara — strong family, strong
+country.</p>
+<hr />
+<h2 id="notes-tjukurpa-unngu">Notes / Tjukurpa unngu</h2>
+<ul>
+<li><strong>Pacing:</strong> One module a week. Don’t compress to a
+weekend — the time <em>between</em> sessions is when conversations
+actually happen.</li>
+<li><strong>Async:</strong> Each module works as a self-paced unit.</li>
+<li><strong>Age range:</strong> Discussion works from about age 12. For
+younger (8–11), simplify Weeks 2 and 3 and skip the deepfake-search
+activity.</li>
+<li><strong>Single-parent / multi-teen households:</strong> All
+activities scale. The “pair” can be parent + teen, two parents, two
+siblings, or guardian + child.</li>
+<li><strong>Updating:</strong> AI moves fast. Re-check resources every 6
+months.</li>
+</ul>
+<hr />
+<h2 id="translators-note-anangu-wangka-tjara">Translator’s note / Anangu
+wangka-tjara</h2>
+<p>This is a <strong>working draft</strong>. Pitjantjatjara has no
+settled vocabulary for modern technical terms like “large language
+model,” “deepfake,” “algorithm,” or “training data” — so I’ve used a
+bilingual side-by-side format and kept the English technical terms
+visible. A proper Anangu-led translation would:</p>
+<ol type="1">
+<li>Decide which technical terms to keep in English, which to gloss, and
+which to create new Pitjantjatjara words for (in consultation with
+elders and Pitjantjatjara teachers).</li>
+<li>Use proper Pitjantjatjara orthography for special characters (ṉ, ṟ,
+ṯ, ṅ, ḻ) consistently.</li>
+<li>Replace generic examples (CEO, World War I) with examples relevant
+to APY Lands, Anangu families, and Anangu history.</li>
+<li>Run it past kids and parents on Country before publishing.</li>
+</ol>
+<p><strong>Please submit corrections</strong> as a pull request to <a
+href="https://github.com/robertmccallnz/ai-literacy-for-families">robertmccallnz/ai-literacy-for-families</a>,
+or open an issue with notes. The Kiwi Dialectic will accept all
+good-faith corrections from Anangu speakers immediately and credit you
+(or your community) at the top of the file. CC BY-SA 4.0.</p>
+<p><em>Walytja-ngka kuṉpu — strong family, strong people, strong
+country.</em></p>
+
+<div class="pager"><a class="outline" href="w6.html">← Previous</a><span class="placeholder">·</span></div>
+<div class="footer-note">
+  Free under CC BY-SA 4.0 · From <a href="https://kiwidialectic.substack.com">The Kiwi Dialectic</a> ·
+  <a href="https://github.com/robertmccallnz/ai-literacy-for-families">Edit / translate / fork on GitHub</a>
+</div>
+</main>
+</div>
+</body>
+</html>

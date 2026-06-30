@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Literacy for Families — Free 6-Week Course</title>
+<meta name="description" content="A free, openly licensed 6-week AI literacy course for parents and teens. Available in English, Te Reo Māori, Sāmoan, Português (Brasil), Guaraní, and Pitjantjatjara. From The Kiwi Dialectic.">
+<style>
+  :root {
+    --ink: #111;
+    --paper: #f8f5ee;
+    --rule: #111;
+    --accent: #b3000c;
+    --muted: #5a5550;
+    --soft: #efe9dc;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+    line-height: 1.55;
+    font-size: 18px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+  header.masthead {
+    border-top: 6px solid var(--rule);
+    border-bottom: 2px solid var(--rule);
+    padding: 24px 0 18px;
+    margin-bottom: 28px;
+  }
+  .kicker {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .18em;
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  h1 {
+    font-family: "Iowan Old Style", "Times New Roman", serif;
+    font-weight: 900;
+    font-size: clamp(40px, 6.5vw, 72px);
+    line-height: 1.02;
+    margin: 0 0 10px;
+    letter-spacing: -0.01em;
+  }
+  .deck {
+    font-family: "Iowan Old Style", Georgia, serif;
+    font-style: italic;
+    font-size: clamp(18px, 2.2vw, 24px);
+    color: var(--ink);
+    max-width: 800px;
+    margin: 6px 0 0;
+  }
+  .byline {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--muted);
+    margin-top: 14px;
+  }
+  .byline a { color: var(--accent); text-decoration: none; }
+  .byline a:hover { text-decoration: underline; }
+
+  section { margin: 36px 0; }
+  h2 {
+    font-family: "Iowan Old Style", Georgia, serif;
+    font-weight: 800;
+    font-size: clamp(24px, 3vw, 34px);
+    margin: 0 0 14px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--rule);
+  }
+  h3 {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 8px;
+  }
+  p { margin: 0 0 14px; }
+  a { color: var(--accent); }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
+  }
+  .card {
+    background: white;
+    border: 1px solid #d8d2c4;
+    padding: 18px 18px 16px;
+    border-left: 4px solid var(--accent);
+  }
+  .card h4 {
+    margin: 0 0 6px;
+    font-size: 20px;
+    font-family: "Iowan Old Style", Georgia, serif;
+    font-weight: 800;
+  }
+  .card .lang-native {
+    font-size: 14px;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+  .card ul { padding: 0; margin: 8px 0 0; list-style: none; }
+  .card li { padding: 3px 0; font-size: 15px; }
+  .card a { text-decoration: none; }
+  .card a:hover { text-decoration: underline; }
+  .pill {
+    display: inline-block;
+    background: var(--soft);
+    color: var(--ink);
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    padding: 2px 8px;
+    border: 1px solid #c8bfa6;
+    margin-left: 6px;
+  }
+  .draft { background: #ffefcc; border-color: #d6a700; }
+
+  .lead {
+    columns: 2;
+    column-gap: 32px;
+    font-size: 18px;
+  }
+  @media (max-width: 720px) { .lead { columns: 1; } }
+
+  .twocol {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+  @media (max-width: 720px) { .twocol { grid-template-columns: 1fr; } }
+
+  footer {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .links a { margin-right: 14px; }
+  .cta {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 10px 16px;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    font-size: 13px;
+    text-decoration: none;
+    border: 2px solid var(--ink);
+    margin: 4px 8px 4px 0;
+  }
+  .cta.outline { background: var(--paper); color: var(--ink); }
+  .cta:hover { background: var(--accent); border-color: var(--accent); color: white; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="masthead">
+    <div class="kicker">A Free Curriculum from The Kiwi Dialectic</div>
+    <h1>AI Literacy for Families</h1>
+    <p class="deck">A 6-week course for parents and teens. Built around the questions that matter: who owns it, who profits, who pays. Free. Openly licensed. Translated.</p>
+    <p class="byline">By <a href="https://kiwidialectic.substack.com">The Kiwi Dialectic</a> · CC BY-SA 4.0 · <a href="https://github.com/robertmccallnz/ai-literacy-for-families">Source on GitHub</a></p>
+  </header>
+
+  <section>
+    <p class="lead">Four companies own most of the AI your kids talk to every day. Their shareholders set the rules. Your family lives with the consequences. This is a free, openly licensed 6-week course built so that parents and teens can push back together — at the kitchen table, in a school, in a library, in a union local, on a marae. No jargon. No fear-mongering. No sign-up. Read everything in your browser, print the workbook, share the social kit, or fork the whole thing for your community.</p>
+    <p>
+      <a class="cta" href="course/ai_literacy_course.md">Start the Course</a>
+      <a class="cta outline" href="workbook/ai_literacy_workbook.md">Family Workbook</a>
+      <a class="cta outline" href="https://kiwidialectic.substack.com">Subscribe on Substack</a>
+    </p>
+  </section>
+
+  <section>
+    <h2>Choose your language</h2>
+    <p>The course, workbook, Substack post pack, and social media kit are translated into five languages alongside English. Translations marked <span class="pill draft">working draft</span> need native-speaker review before classroom use — pull requests warmly welcomed.</p>
+
+    <div class="grid">
+
+      <div class="card">
+        <h4>English</h4>
+        <div class="lang-native">The original</div>
+        <ul>
+          <li>📖 <a href="course/ai_literacy_course.md">Course (markdown)</a></li>
+          <li>📄 <a href="course/ai_literacy_course.pdf">Course (PDF)</a></li>
+          <li>📓 <a href="workbook/ai_literacy_workbook.md">Workbook</a> · <a href="workbook/ai_literacy_workbook.pdf">PDF</a></li>
+          <li>📰 <a href="substack/ai_literacy_course_substack.md">Substack pack</a> · <a href="substack/ai_literacy_course_substack.pdf">PDF</a></li>
+          <li>📣 <a href="social/ai_literacy_social_kit.md">Social kit</a> · <a href="social/ai_literacy_social_kit.pdf">PDF</a></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h4>Te Reo Māori</h4>
+        <div class="lang-native">Mātauranga AI mō ngā Whānau</div>
+        <ul>
+          <li>📖 <a href="translations/ai_literacy_course.mi.md">Akoranga (markdown)</a></li>
+          <li>📄 <a href="translations/pdf/ai_literacy_course.mi.pdf">Akoranga (PDF)</a></li>
+          <li>📓 <a href="translations/workbook/ai_literacy_workbook.mi.md">Pukapuka mahi</a> · <a href="translations/pdf/ai_literacy_workbook.mi.pdf">PDF</a></li>
+          <li>📰 <a href="translations/substack/ai_literacy_course_substack.mi.md">Substack</a> · <a href="translations/pdf/ai_literacy_course_substack.mi.pdf">PDF</a></li>
+          <li>📣 <a href="translations/social/ai_literacy_social_kit.mi.md">Pouaka pāpāho</a> · <a href="translations/pdf/ai_literacy_social_kit.mi.pdf">PDF</a></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h4>Gagana Sāmoa</h4>
+        <div class="lang-native">Atamai AI mo Aiga</div>
+        <ul>
+          <li>📖 <a href="translations/ai_literacy_course.sm.md">Aoaoga (markdown)</a></li>
+          <li>📄 <a href="translations/pdf/ai_literacy_course.sm.pdf">Aoaoga (PDF)</a></li>
+          <li>📓 <a href="translations/workbook/ai_literacy_workbook.sm.md">Tusi galuega</a> · <a href="translations/pdf/ai_literacy_workbook.sm.pdf">PDF</a></li>
+          <li>📰 <a href="translations/substack/ai_literacy_course_substack.sm.md">Substack</a> · <a href="translations/pdf/ai_literacy_course_substack.sm.pdf">PDF</a></li>
+          <li>📣 <a href="translations/social/ai_literacy_social_kit.sm.md">Atoaga faasalalauga</a> · <a href="translations/pdf/ai_literacy_social_kit.sm.pdf">PDF</a></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h4>Português (Brasil)</h4>
+        <div class="lang-native">Letramento em IA para Famílias</div>
+        <ul>
+          <li>📖 <a href="translations/ai_literacy_course.pt-BR.md">Curso (markdown)</a></li>
+          <li>📄 <a href="translations/pdf/ai_literacy_course.pt-BR.pdf">Curso (PDF)</a></li>
+          <li>📓 <a href="translations/workbook/ai_literacy_workbook.pt-BR.md">Apostila</a> · <a href="translations/pdf/ai_literacy_workbook.pt-BR.pdf">PDF</a></li>
+          <li>📰 <a href="translations/substack/ai_literacy_course_substack.pt-BR.md">Substack</a> · <a href="translations/pdf/ai_literacy_course_substack.pt-BR.pdf">PDF</a></li>
+          <li>📣 <a href="translations/social/ai_literacy_social_kit.pt-BR.md">Kit de mídias</a> · <a href="translations/pdf/ai_literacy_social_kit.pt-BR.pdf">PDF</a></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h4>Avañe'ẽ / Guaraní <span class="pill draft">working draft</span></h4>
+        <div class="lang-native">Arandu IA-rehegua Ogapyguakuérape ĝuarã</div>
+        <ul>
+          <li>📖 <a href="translations/ai_literacy_course.gn.md">Arandu (markdown)</a></li>
+          <li>📄 <a href="translations/pdf/ai_literacy_course.gn.pdf">Arandu (PDF)</a></li>
+          <li>📓 <a href="translations/workbook/ai_literacy_workbook.gn.md">Kuatia tembiapo</a> · <a href="translations/pdf/ai_literacy_workbook.gn.pdf">PDF</a></li>
+          <li>📰 <a href="translations/substack/ai_literacy_course_substack.gn.md">Substack</a> · <a href="translations/pdf/ai_literacy_course_substack.gn.pdf">PDF</a></li>
+          <li>📣 <a href="translations/social/ai_literacy_social_kit.gn.md">Tembiporu</a> · <a href="translations/pdf/ai_literacy_social_kit.gn.pdf">PDF</a></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h4>Pitjantjatjara <span class="pill draft">working draft</span></h4>
+        <div class="lang-native">Bilingual with English — Anangu review invited</div>
+        <ul>
+          <li>📖 <a href="translations/ai_literacy_course.pjt.md">Course (bilingual md)</a></li>
+          <li>📄 <a href="translations/pdf/ai_literacy_course.pjt.pdf">Course (PDF)</a></li>
+          <li>📓 <a href="translations/workbook/ai_literacy_workbook.pjt.md">Workbook</a> · <a href="translations/pdf/ai_literacy_workbook.pjt.pdf">PDF</a></li>
+          <li>📰 <a href="translations/substack/ai_literacy_course_substack.pjt.md">Substack</a> · <a href="translations/pdf/ai_literacy_course_substack.pjt.pdf">PDF</a></li>
+          <li>📣 <a href="translations/social/ai_literacy_social_kit.pjt.md">Social kit</a> · <a href="translations/pdf/ai_literacy_social_kit.pjt.pdf">PDF</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>What's inside</h2>
+    <div class="twocol">
+      <div>
+        <h3>The 6-Week Course</h3>
+        <p>One hour a week. Six weeks. Each module tackles one socio-economic tension behind today's AI — ownership, surveillance, extraction, bias, automation, dignity — and ends with a real conversation prompt for parent and teen.</p>
+        <h3>The Family Workbook</h3>
+        <p>A printable companion. Three sections: a <strong>Household AI Agreement</strong> to draft and sign together, the <strong>SIFT Cheat Sheet</strong> for two-minute fact-checking, and <strong>Mirror Commitment Cards</strong> for the fridge.</p>
+      </div>
+      <div>
+        <h3>The Substack Post Pack</h3>
+        <p>Eight ready-to-publish posts — one intro, six weekly modules, one wrap-up. Republish on your own newsletter or community blog under CC BY-SA 4.0.</p>
+        <h3>The Social Media Kit</h3>
+        <p>Five launch posts (Twitter/X, Facebook, LinkedIn) framed around the political economy of AI — ownership, privacy as a class issue, teens as unpaid labour, bias as balance sheet, the call to organise.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Run it where you live</h2>
+    <p>This course belongs to whoever runs it. Schools, libraries, parent groups, union locals, marae, churches, ranger groups, community centres — anyone can take the whole thing, adapt it, translate it for your context, and run it without asking permission. That's what <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> is for.</p>
+    <p>Want to add a language we haven't covered? Start with the <a href="LANGUAGE_TEMPLATE.md">language template</a> and open a pull request. If your community has been historically used as a translation testbed without consent, we'd rather wait for you than push ahead without you.</p>
+    <p><a class="cta" href="https://github.com/robertmccallnz/ai-literacy-for-families">Fork on GitHub</a> <a class="cta outline" href="https://kiwidialectic.substack.com">Subscribe on Substack</a></p>
+  </section>
+
+  <footer>
+    <p class="links">
+      <a href="https://github.com/robertmccallnz/ai-literacy-for-families">GitHub repo</a>
+      <a href="https://kiwidialectic.substack.com">The Kiwi Dialectic on Substack</a>
+      <a href="https://x.com/musenz">@musenz on X</a>
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+    </p>
+    <p>© The Kiwi Dialectic. Share, remix, organise — the only thing you can't do is lock it up again.</p>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -47,8 +47,16 @@ ai-literacy-for-families/
 ├── workbook/                     ← the printable companion
 │   ├── ai_literacy_workbook.md   ← Markdown source
 │   └── ai_literacy_workbook.pdf  ← Print-ready PDF (13 pages)
-└── substack/                     ← ready-to-paste Substack posts
-    └── ai_literacy_course_substack.md   ← Intro + 6 weekly posts + wrap-up
+├── substack/                     ← ready-to-paste Substack posts
+│   └── ai_literacy_course_substack.md   ← Intro + 6 weekly posts + wrap-up
+└── translations/                 ← community translations of the course
+    ├── README.md                 ← status table + how to contribute
+    ├── LANGUAGE_TEMPLATE.md      ← template for adding a new language
+    ├── ai_literacy_course.mi.md      ← Te Reo Māori
+    ├── ai_literacy_course.sm.md      ← Gagana Sāmoa
+    ├── ai_literacy_course.pt-BR.md   ← Português (Brasil)
+    ├── ai_literacy_course.gn.md      ← Avañe'ẽ / Guaraní (working draft)
+    └── ai_literacy_course.pjt.md     ← Pitjantjatjara (working draft, bilingual)
 ```
 
 ### The 6-week course
@@ -76,6 +84,23 @@ A 13-page printable PDF with:
 ### The Substack pack
 
 Eight ready-to-paste posts (intro + six weekly modules + wrap-up), rewritten in a more conversational long-form voice. Includes a short note on free-vs-paid publishing models if you want to run this as a paid newsletter series.
+
+---
+
+## Translations
+
+The course is being translated into community languages. See [translations/README.md](translations/README.md) for the full table and contribution guide.
+
+| Language | Code | Status |
+|---|---|---|
+| English (source) | `en` | Canonical |
+| Te Reo Māori | `mi` | Draft — review welcome |
+| Gagana Sāmoa | `sm` | Draft — review welcome |
+| Português (Brasil) | `pt-BR` | Ready for use, native review welcome |
+| Avañe'ẽ (Guaraní) | `gn` | ⚠️ Working draft — review required |
+| Pitjantjatjara | `pjt` | ⚠️ Working draft, bilingual — Anangu review required |
+
+If your community speaks a language not listed above, please add it — copy [translations/LANGUAGE_TEMPLATE.md](translations/LANGUAGE_TEMPLATE.md), translate from the English source, and open a pull request.
 
 ---
 

@@ -48,15 +48,20 @@ ai-literacy-for-families/
 │   ├── ai_literacy_workbook.md   ← Markdown source
 │   └── ai_literacy_workbook.pdf  ← Print-ready PDF (13 pages)
 ├── substack/                     ← ready-to-paste Substack posts
-│   └── ai_literacy_course_substack.md   ← Intro + 6 weekly posts + wrap-up
-└── translations/                 ← community translations of the course
+│   ├── ai_literacy_course_substack.md   ← English: intro + 6 weekly + wrap-up
+│   └── ai_literacy_course_substack.{mi,sm,pt-BR,gn,pjt}.md ← 5 translations
+├── social/                       ← 5-post launch kit (Twitter/X, FB, LinkedIn)
+│   ├── ai_literacy_social_kit.md
+│   └── ai_literacy_social_kit.{mi,sm,pt-BR,gn,pjt}.md     ← 5 translations
+├── index.html                    ← GitHub Pages landing page
+└── translations/                 ← community translations + PDFs
     ├── README.md                 ← status table + how to contribute
     ├── LANGUAGE_TEMPLATE.md      ← template for adding a new language
-    ├── ai_literacy_course.mi.md      ← Te Reo Māori
-    ├── ai_literacy_course.sm.md      ← Gagana Sāmoa
-    ├── ai_literacy_course.pt-BR.md   ← Português (Brasil)
-    ├── ai_literacy_course.gn.md      ← Avañe'ẽ / Guaraní (working draft)
-    └── ai_literacy_course.pjt.md     ← Pitjantjatjara (working draft, bilingual)
+    ├── ai_literacy_course.{mi,sm,pt-BR,gn,pjt}.md
+    ├── workbook/                 ← workbook translations
+    ├── substack/                 ← substack pack translations
+    ├── social/                   ← social kit translations
+    └── pdf/                      ← print-ready PDFs in all 5 languages
 ```
 
 ### The 6-week course

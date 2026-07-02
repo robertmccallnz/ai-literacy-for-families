@@ -89,6 +89,7 @@ LANGS = {
         "next_label": "Next →",
         "back_label": "All languages",
         "subtitle": "Bilingual draft — Anangu review invited",
+        "calendar_label": "Course calendar",
         "draft": True,
     },
 }
@@ -477,6 +478,7 @@ def build_sidebar(cfg: dict, current_key: str, lang_code: str, sections_present:
     <ul>
       <li><a href="../../index.html">← {escape(cfg['back_label'])}</a></li>
       <li><a href="https://kiwidialectic.substack.com" target="_blank">Substack</a></li>
+      <li><a href="https://robertmccallnz.github.io/kiwidialecticcalendar-/github-calendar-connector.html" target="_blank">{escape(cfg.get('calendar_label', 'Course calendar'))}</a></li>
       <li><a href="https://github.com/robertmccallnz/ai-literacy-for-families" target="_blank">GitHub</a></li>
     </ul>
   </nav>
@@ -522,6 +524,7 @@ def build_page(lang_code: str, cfg: dict, key: str, body_html: str,
 {pager}
 <div class="footer-note">
   Free under CC BY-SA 4.0 · From <a href="https://kiwidialectic.substack.com">The Kiwi Dialectic</a> ·
+  <a href="https://robertmccallnz.github.io/kiwidialecticcalendar-/github-calendar-connector.html">{escape(cfg.get('calendar_label', 'Course calendar'))}</a> ·
   <a href="https://github.com/robertmccallnz/ai-literacy-for-families">Edit / translate / fork on GitHub</a>
 </div>
 </main>

@@ -239,6 +239,7 @@ main th { background: var(--soft); font-weight: 700; }
 }
 .footer-note a { color: var(--accent); }
 </style>
+  <link rel="stylesheet" href="../../assets/community.css">
 </head>
 <body>
 <div class="layout">
@@ -394,5 +395,19 @@ footer + .kd-hub, .kd-hub{margin-top:0}
 </footer>
 
 
+
+<section class="kd-community" aria-label="Community discussion">
+  <div class="kc-inner">
+    <div class="kc-head">
+      <h2 class="kc-title">Kōrero · <span>Community</span></h2>
+      <span class="kc-live"><span class="kc-dot"></span><span>Kōrero open</span></span>
+    </div>
+    <p class="kc-lede">Kōrero mai — join the discussion below.</p>
+    <p class="kc-meta">One thread per page. Public GitHub Discussion.</p>
+    <div id="kd-comments"></div>
+    <p class="kc-fallback">Widget not loading? Reply on Substack or Facebook.</p>
+  </div>
+</section>
+<script src="../../assets/community.js" defer></script>
 </body>
 </html>
